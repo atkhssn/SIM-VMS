@@ -11,6 +11,7 @@
                     </a>
                     <h3>Sign In</h3>
                 </div>
+                <p class="text-danger text-center">@ViewBag.Message</p>
                 <form asp-controller="Home" asp-action="Login" class="row g-3">
                     <div class="form-floating mb-3">
                         <input asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -30,7 +31,7 @@
                     @* <a class="btn btn-primary py-3 w-100 mb-4" asp-controller="Admin" asp-action="Index">Sign In</a> *@
                     <button type="submit" class="btn btn-info py-3 w-100 mb-4">Sign In</button>
                 </form>
-                <p class="text-center mb-0">Don't have an Account? <a asp-controller="Home" asp-action="Register">Register</a></p>
+                <p class="text-center mb-0">Don't have an Account? <a asp-controller="" asp-action="">Register</a></p>
             </div>
         </div>
     </div>

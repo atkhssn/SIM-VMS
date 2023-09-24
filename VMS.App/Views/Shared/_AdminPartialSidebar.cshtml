@@ -1,41 +1,39 @@
 ﻿<div class="navbar-nav w-100">
     <div class="border-bottom mb-2">
         <div>
-            <a asp-controller="Admin" asp-action="index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a asp-controller="Admin" asp-action="index" class="nav-item nav-link custom-menu"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
         </div>
+
         <div>
-            <a asp-controller="Requisition" asp-action="index" class="nav-item nav-link "><i class="fas fa-book-medical me-2"></i>Booking</a>
+            @* <a asp-controller="Requisition" asp-action="index" class="nav-item nav-link custom-menu"><i class="fas fa-scroll me-2"></i>Requisition</a> *@
         </div>
-        <div class="dropdown driver-expense">
-            <button class="nav-item nav-link setting-btn dropdown-toggle" type="button" id="driverExpenseMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <i class="fas fa-wallet me-2"></i>Driver Expeense
+
+        <div class="dropdown driver-expense show">
+            <button class="nav-item nav-link setting-btn custom-menu dropdown-toggle" type="button" id="driverExpenseMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="fas fa-wallet me-2"></i>Driver Expense
             </button>
 
-            <div class="dropdown-menu menu-content" aria-labelledby="driverExpenseMenuButton">
+            <div class="dropdown-menu menu-content show" aria-labelledby="driverExpenseMenuButton">
                 <div>
-                    <a asp-controller="RoadExpense" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-hand-holding-usd me-2"></i>Donation</a>
+                    <a asp-controller="RoadExpense" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-file-invoice-dollar me-2"></i>Bridge/Ferry</a>
                 </div>
 
                 <div>
-                    <a asp-controller="Fuel" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-gas-pump me-2"></i>Fuel Load</a>
+                    <a asp-controller="Fuel" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-gas-pump me-2"></i>Fuel Consumption</a>
                 </div>
 
             </div>
         </div>
-        
-        @* <div>
-        <a asp-controller="Maintenance" asp-action="Index" class="nav-item nav-link"><i class="fa fa-car-battery me-2"></i>Maintenance</a>
-        </div>*@
     </div>
 
     <div class="dropdown setting-box show">
-        <button class="nav-item nav-link setting-btn dropdown-toggle" type="button" id="settingMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <button class="nav-item nav-link setting-btn custom-menu dropdown-toggle" type="button" id="settingMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fas fa-cog me-2"></i>Settings
         </button>
 
         <div class="dropdown-menu menu-content show" aria-labelledby="settingMenuButton">
             <div>
-                <a asp-controller="Manufacture" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-shipping-fast me-2"></i>Manufacture</a>
+                <a asp-controller="Manufacture" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-dolly-flatbed me-2"></i>Manufacture</a>
             </div>
 
             <div>
@@ -51,7 +49,6 @@
             <div>
                 <a asp-controller="TransportAgency" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fa fa-handshake me-2"></i>Trans. Agency</a>
             </div>
-
         </div>
     </div>
 </div>

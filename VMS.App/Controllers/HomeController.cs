@@ -10,7 +10,7 @@ namespace VMS.App.Controllers
     {
         // static user credentials
         protected const string Email = "admin@gmail.com";
-        protected const string Password = "admin";
+        protected const string Password = "123456";
 
         private readonly ILogger<HomeController> _logger;
         public HomeController(ILogger<HomeController> logger)
@@ -34,13 +34,14 @@ namespace VMS.App.Controllers
             var userEmail = loginModel.Email;
             var userPassword = loginModel.Password;
 
-            if(Email == userEmail & Password == userPassword)
+            if (Email == userEmail & Password == userPassword)
             {
                 return RedirectToAction("Index", "Admin");
             }
             else
             {
-                return RedirectToAction("Register");
+                ViewBag.Message = "Email and password don't match!";
+                return View("Index", loginModel);
             }
         }
 

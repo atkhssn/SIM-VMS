@@ -1,0 +1,107 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@{
+    ViewData["Title"] = "Road Expense List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model RoadExpenseModel
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Add New Donation</h6>
+        <div class="merchant-form">
+            <form class="row g-3" asp-controller="RoadExpense" asp-action="Add" enctype="multipart/form-data">
+                <div class="col-md-6 mb-3">
+                    <label for="inputDonationType" class="form-label">Donation Type</label>
+                    <select asp-for="DonationType" asp-items="@Html.GetEnumSelectList<DonationType>();" class="form-control" id="inputDonationType"></select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputDonationAmount" class="form-label">Amount</label>
+                    <input asp-for="DonationAmount" type="text" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputDonationDate" class="form-label">Date</label>
+                    <input asp-for="DonationDate" type="date" class="form-control" id="inputDonationDate">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputLocation" class="form-label">Location</label>
+                    <input asp-for="Location" type="text" class="form-control" id="inputLocation">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputComment" class="form-label">Comments</label>
+                    <textarea asp-for="Comments" class="form-control" id="inputComment" placeholder="Type comments if needed..." style="height:20px"></textarea>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputDocument" class="form-label">Donation Voucher</label>
+                    <input asp-for="DonationDocument" type="file" accept="application/pdf" class="form-control" id="inputDocument">
+                </div>
+                <div class="col-md-12 text-end">
+                    <button class="btn btn-info d-inline-block" type="submit">Add Donation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+            <h6 class="mb-4">Merchant List</h6>
+            <table id="myTable" class="table table-bordered table-striped text-center mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Donation Type</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Donation Date</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Comments</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var roadExpense in Model.RoadExpenseModels)
+                    {
+                        <tr>
+                            <td scope="row">@roadExpense.Id</td>
+                            <td>
+                                @if (roadExpense.DonationType == "1")
+                                {
+                                    <p>Toll Bill</p>
+                                }
+                                else if (roadExpense.DonationType == "2")
+                                {
+                                    <p>Traffic Bill</p>
+                                }
+                                else if (roadExpense.DonationType == "3")
+                                {
+                                    <p>On Road Doantion</p>
+                                }
+                                else
+                                {
+                                    <p>Other Cost</p>
+                                }
+                            </td>
+                            <td>@roadExpense.DonationAmount</td>
+                            <td>@roadExpense.DonationDate</td>
+                            <td>@roadExpense.Location</td>
+                            <td>@roadExpense.Comments</td>
+                            <td>
+                                <a class="btn btn-info" asp-controller="RoadExpense" asp-action="Edit" asp-route-id="@roadExpense.Id">View</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

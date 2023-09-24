@@ -1,0 +1,84 @@
+﻿@model MaintenanceModel
+
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+
+
+<div class="">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Maintenance Updated Info</h6>
+
+
+        <div class="card-body">
+            <form asp-action="Create" asp-controller="Maintenance" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+                {
+                    <div class="alert alert-warning">
+                        @ViewData["ErrorMessage"]
+                    </div>
+                }
+                <div class="row mx-2">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12 mb-2">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="control-label">Servicing History</label>
+                                    <input asp-for="ServiceDate" type="date" class="form-control" placeholder="Enter servicing history">
+                                </div>
+                            </div>
+
+
+                            <!-- Start Vehicle Drop Down Fields -->
+                            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                                <div class="form-group">
+                                    <label class="control-label">Maintenance Description</label>
+                                    <input asp-for="Description" type="text" class="form-control" placeholder="Enter history">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                                <div class="form-group">
+                                    <label class="control-label">Vehicle Identification</label>
+                                    <input asp-for="VehicleId" type="text" class="form-control" placeholder="Enter the Vehicle">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                                <div class="form-group">
+                                    <label class="control-label">Name of the Parts</label>
+                                    <input asp-for="PartsName" type="text" class="form-control" placeholder="Enter parts name">
+                                </div>
+                            </div>
+
+                            <!-- End Vehicle Drop Down Fields -->
+
+                            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                                <div class="form-group">
+                                    <label class="control-label">Price of the Parts</label>
+                                    <input asp-for="PartsPrice" type="number" class="form-control" placeholder="Enter price of the parts">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                                <div class="form-group">
+                                    <label class="control-label">Services Bills</label>
+                                    <input asp-for="WorkshopBill" type="number" class="form-control" placeholder="Enter billing history">
+                                </div>
+                            </div>
+
+
+
+                            <div class="row mx-2">
+                                <div class="form-group col-sm-12">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

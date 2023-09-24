@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Edit Merchant";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model MerchantModel
+
+<div class="row">
+    <div class="col-md-12 mx-auto">
+        <div class="merchant-content p-4">
+            <h3 class="text-info">Edit Merchant</h3>
+            <div class="merchant-form">
+                <form class="row g-3" asp-action="Update" method="post">
+                    <input asp-for="Id" type="text" class="form-control" id="inputMerchantName" hidden>
+                    <div class="col-md-6">
+                        <label for="inputMerchantName" class="form-label">Merchant Name</label>
+                        <input asp-for="MerchantName" type="text" class="form-control" id="inputMerchantName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputDepartmentName" class="form-label">Department Name</label>
+                        <input asp-for="DepartmentName" type="text" class="form-control" id="inputDepartmentName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputResponsiblePerson" class="form-label">Conatct Person</label>
+                        <input asp-for="ResponsiblePerson" type="text" class="form-control" id="inputResponsiblePerson">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPhone" class="form-label">Conatct Number</label>
+                        <input asp-for="MerchantPhone" type="number" class="form-control" id="inputPhone">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail" class="form-label">Email Address</label>
+                        <input asp-for="MerchantEmail" type="email" class="form-control" id="inputEmail">
+                    </div>
+                    <div class="col-md-6 text-end mt-5">
+                        <button class="btn btn-info d-inline-block" type="submit" asp-controller="Merchant" asp-action="Update">Update</button>
+                        <button class="btn btn-danger d-inline-block" type="submit" asp-controller="Merchant" asp-action="Delete">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

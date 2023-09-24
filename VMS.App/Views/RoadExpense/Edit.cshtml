@@ -1,0 +1,53 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@{
+    ViewData["Title"] = "Road Expense List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model RoadExpenseModel
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Update Donation</h6>
+        <div class="merchant-form">
+            <form class="row g-3" asp-controller="RoadExpense" asp-action="Update" enctype="multipart/form-data">
+                <div class="col-md-6 mb-3">
+                    <label for="getDonationType" class="form-label">Donation Type</label>
+                    <select asp-for="DonationType" asp-items="@Html.GetEnumSelectList<DonationType>();" class="form-control" id="getDonationType"></select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="getDonationAmount" class="form-label">Amount</label>
+                    <input asp-for="DonationAmount" type="text" class="form-control" id="getDonationAmount">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="getDonationDate" class="form-label">Date</label>
+                    <input asp-for="DonationDate" type="date" class="form-control" id="getDonationDate">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="getLocation" class="form-label">Location</label>
+                    <input asp-for="Location" type="text" class="form-control" id="getLocation">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="getComment" class="form-label">Comments</label>
+                    <textarea asp-for="Comments" class="form-control" id="getComment" placeholder="Type comments if needed..."></textarea>
+                </div>
+                <div class="col-md-6 text-end mt-5">
+                    <input asp-for="Id" hidden/>
+                    <button asp-controller="RoadExpense" asp-action="Update" class="btn btn-info d-inline-block" type="submit">Update</button>
+                    <button asp-controller="RoadExpense" asp-action="Delete" class="btn btn-danger d-inline-block" type="submit">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

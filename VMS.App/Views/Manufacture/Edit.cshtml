@@ -1,0 +1,122 @@
+﻿@model ManufactureModel
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+@*
+@section VehicleDatatableStyle{
+
+    <link href="~/vehicledatatables/css/jquery.datatables.css" rel="stylesheet" />
+    <link href="~/vehicledatatables/css/jquery.datatables.min.css" rel="stylesheet" />
+      <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+
+    <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+
+}*@
+<div class="">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Manufacture Updated Info</h6>
+
+
+        @*  <div class="card-body"> *@
+        <form asp-action="Create" asp-controller="Cow" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+            {
+                <div class="alert alert-warning">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+            <div class="row mx-2">
+                <!-- Start Vehicle Drop Down Fields -->
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                    <div class="form-group">
+                        <label class="control-label">Manufactured Company</label>
+                        <input type="text" class="form-control" placeholder="Enter Brand">
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                    <div class="form-group">
+                        <label class="control-label">Car Type</label>
+                        <input type="text" class="form-control" placeholder="Enter Car Type">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- End Vehicle Drop Down Fields -->
+
+            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                <div class="form-group">
+                    <label class="control-label">Vehicle Type</label>
+                    <input type="number" class="form-control" placeholder="Enter Vehicle Type">
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                <div class="form-group">
+                    <label class="control-label">Manufacture Year</label>
+                    <input type="date" class="form-control" placeholder="Enter Manufacture Year">
+                </div>
+            </div>
+
+            <div class="row mx-2">
+                <div class="form-groupcol-md-12 text-end">
+                    <button type="submit" class="btn btn-infro">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@*<div class=" bg-light rounded h-100 p-4">
+
+    <table id="myTable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Manufacturedby</th>
+                <th>Car Type</th>
+                <th>Vehicle Type</th>
+                <th>Manufacture Year</th>
+
+                <th style="width:150px">Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+            <tr>
+                <th>Manufacturedby</th>
+                <th>Car Type</th>
+                <th>Vehicle Type</th>
+                <th>Manufacture Year</th>
+
+                <th style="width:150px">Actions</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>*@
+
+@*@section VehicleDatatableScript{
+
+    <script src="~/vehicledatatables/js/jquery.datatables.js"></script>
+    <script src="~/vehicledatatables/js/jquery.datatables.min.js"></script>
+    <script src="~/js/vehicle_js.js"></script>
+
+    @* <script src="~/vehicledatatables/ltetables/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/buttons.colvis.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/buttons.html5.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/buttons.print.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/datatables.bootstrap4.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/datatables.buttons.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/datatables.responsive.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/jquery.datatables.min.js"></script>
+    <script src="~/vehicledatatables/ltetables/js/responsive.bootstrap4.min.js"></script>
+}*@
+
+
+

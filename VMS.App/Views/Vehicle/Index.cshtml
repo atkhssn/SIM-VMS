@@ -1,0 +1,385 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@model VMS.Infrastructure.Model.VehicleModel
+
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .dataTables_filter {
+        margin-bottom: 25px;
+    }
+</style>
+
+
+<div id="dataTable" class="mt-2 align-self-end">
+    <div class="float-end mt-3 mx-lg-5">
+        <a asp-action="Create" asp-controller="Vehicle" class="btn btn-primary"><i class="fa fa-plus"></i> Add Vehicle</a>
+
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-2 text-dark border h-100 p-4">
+
+        <h6 class="mb-4">Vehicle List</h6>
+
+        <table id="myTable" class="table table-bordered table-striped  mt-2">
+            <thead>
+                <tr class="text-center">
+                    <th>SL</th>
+                    <th>Reg. No.</th>
+                    <th>Reg. Ex</th>
+                    @* <th>Model Mode</th>*@
+                    <th>Model</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tf>
+                <tr>
+                </tr>
+            </tf>
+        </table>
+    </div>
+</div>
+<div id="EditPage" class="" style="display:none">
+
+
+    <div class="bg-white rounded-lg shadow-sm p-1 text-dark border h-100 p-4">
+        <h6 class="mb-2">Add New Vehicle</h6>
+
+
+        @*  <div class="card-body"> *@
+        <form asp-action="Create" asp-controller="Vehicle" method="post" enctype="multipart/form-data">
+            @*
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+            {
+            <div class="alert alert-warning">
+            @ViewData["ErrorMessage"]
+            </div>
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>*@
+
+            <!-- Start Vehicle Drop Down Fields -->
+
+
+
+            <div class="row">
+                <!-- Start Vehicle Drop Down Fields -->
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label ">Manufacture Name</label>
+                        <select id="Manufactureid" asp-for="ManufacturedBy"
+                                class="form-control text-success update-group bg-white">
+                            <option>Select Manufacturer</option>
+                        </select>
+                        <span asp-validation-for="ManufacturedBy" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label  ">Model</label>
+                        <select id="Modelid" asp-for="ModelId"
+                                class="form-control text-success update-group bg-white">
+                            <option>Select Model</option>
+                        </select>
+                        <span asp-validation-for="ModelId" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label">Vehicle Category</label>
+                        <select id="VehicleCategoryId" asp-for="VehicleCategoryId" asp-items="Html.GetEnumSelectList<vehicleCategory>()"
+                                class=" form-control text-success update-group bg-white">
+                            <option>Select Category </option>
+
+                        </select>
+                        <span asp-validation-for="VehicleCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Model Year</label>
+
+                        <input asp-for="Modelyear" type="number" id="modelYear" class=" form-control update-group">
+                        <span asp-validation-for="Modelyear" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Type</label>
+
+                        <select id="vehicleTypeId" asp-for="VehicleType" asp-items="Html.GetEnumSelectList<vehicleType>()"
+                                class=" form-control update-group bg-white">
+                            <option>Select Vehicle Type </option>
+
+                        </select>
+                        <span asp-validation-for="VehicleType" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="control-label">Color</label>
+
+                        <select id="colorId" asp-for="Color" asp-items="Html.GetEnumSelectList<color>()"
+                                class="form-control update-group bg-white">
+                            <option>Select Color </option>
+
+                        </select>
+                        <span asp-validation-for="Color" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Mode</label>
+                        <select id="vehicleMode" asp-for="VehicleMode"
+                                class="form-control bg-white update-group">
+                            <option value="0">SIM Logistic</option>
+
+                        </select>
+                        <span asp-validation-for="VehicleMode" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <label class="control-label">Vehicle Capacity</label>
+                    <div class="form-group input-group ">
+
+                        <input id="VehicleCapacity" class="form-control update-group" asp-for="VehicleCapacity" type="text" placeholder="Enter">
+
+                        <select id="VehicleCapacityId" asp-for="VehicleCapacityId" asp-items="Html.GetEnumSelectList<VehicleCapacity>()"
+                                class="bg-white input-group-append form-control update-group">
+                            <option>Select ↓ </option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Mileage</label>
+                        <input id="VehicleMileage" asp-for="VehicleMileage" type="number" class="form-control update-group" placeholder="Enter registration number">
+
+                        <span asp-validation-for="VehicleMileage" class="text-danger"></span>
+
+                    </div>
+                    @*                    <span asp-validation-for="RegNo" class="text-danger"></span>
+                    *@
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Registration No:</label>
+                        <input id="RegNo" asp-for="RegNo" type="text" class="form-control update-group" placeholder="Enter registration number">
+
+                        <span asp-validation-for="RegNo" class="text-danger"></span>
+
+                    </div>
+                    @*                    <span asp-validation-for="RegNo" class="text-danger"></span>
+                    *@
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Registration Date</label>
+                        <input id="RegDate" asp-for="RegDate" class="form-control my-datepicker update-group" type="date" placeholder="Enter registration number">
+                        <span asp-validation-for="RegDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Registration Expiry Date</label>
+                        <input id="Reg_Expired" asp-for="Reg_ExpiryDate" class="form-control my-datepicker update-group" type="date" placeholder="Enter registration number">
+                        <span asp-validation-for="Reg_ExpiryDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Fitness and Tax token</label>
+                        <input id="fitness_TaxToken" asp-for="fitness_TaxToken" type="number" class="form-control update-group" placeholder="Enter fitness and tax token">
+                        <span asp-validation-for="fitness_TaxToken" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Fitness Expiry Date</label>
+                        <input id="fitnessExpireDate" asp-for="fitnessExpireDate" class="form-control my-datepicker update-group" type="date" placeholder="Enter fitness and tax token">
+                        <span asp-validation-for="fitnessExpireDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Chassis Number</label>
+                        <input id="Chassis" asp-for="Chassis" type="text" class="form-control update-group" placeholder="Enter chassis number">
+                        <span asp-validation-for="Chassis" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Engine Number</label>
+                        <input id="engine" asp-for="Engine" type="text" class="form-control update-group" placeholder="Enter engine number">
+                        <span asp-validation-for="Engine" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div id="Photo" class="form-group">
+                        <label class="control-label">Vehicle Image</label>
+                        <input asp-for="Photo" type="file" class="form-control bg-white" placeholder="Upload vehicle image ">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div id="Document" class="form-group">
+                        <label class="control-label">Vehicle Document</label>
+                        <input asp-for="Document" type="file" class="form-control bg-white" placeholder="Upload vehicle document ">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group align-self-end mb-3">
+                    <button id="formButton" type="submit" class="btn btn-info d-inline-block float-end">Add Vehicle</button>
+                </div>
+            </div>
+            <input id="VehicleId" type="hidden" asp-for="VehicleId" value="" />
+
+        </form>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+<!-- Large modal -->
+
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Vehicle Details</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Category</label>
+                        <input id="CategoryModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Model</label>
+                        <input id="ModelModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Manufacture</label>
+                        <input id="ManufactureModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Color</label>
+                        <input id="ColorModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Model Year</label>
+                        <input id="YearModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Vehicle Mode</label>
+                        <input id="ModeModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Vehicle Type</label>
+                        <input id="TypeModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Vehicle Capacity</label>
+                        <input id="VehicleCapacityModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Vehicle Mileage</label>
+                        <input id="vehicleMileageModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Registration No.</label>
+                        <input id="RegistrationModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Registration Date</label>
+                        <input id="RegistrationDateModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Registration Expiry Date</label>
+                        <input id="RegistrationExDate" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Tax & Token</label>
+                        <input id="TokenModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Tax & Token Expiry Date</label>
+                        <input id="TokenExDateModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Chasis No.</label>
+                        <input id="ChasissModal" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 mb-2 bg-white">
+                        <label class="control-label">Engine No.</label>
+                        <input id="EngineModal" disabled>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modalClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Script{
+    @*  $('.my-datepicker').datetimepicker();*@
+
+    <script asp-append-version="true" src="~/js/vehicle_js.js"></script>
+    <script src="~/js/vehicleselectjs/select2.min.js"></script>
+}

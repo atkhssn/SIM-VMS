@@ -1,0 +1,65 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@{
+    ViewData["Title"] = "Update Fuel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model FuelModel
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Update Fuel Information</h6>
+        <div class="merchant-form">
+            <form asp-controller="Fuel" asp-action="Update" class="row g-3" enctype="multipart/form-data">
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Initial Fuel (Liter)</label>
+                    <input asp-for="InitialFuel" type="number" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Loaded Fuel (Liter)</label>
+                    <input asp-for="loadedFuel" type="number" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Fuel Cost</label>
+                    <input asp-for="FuelCost" type="number" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Fuel Station</label>
+                    <input asp-for="FuelStation" type="text" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Location</label>
+                    <input asp-for="StationLocation" type="text" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Date</label>
+                    <input asp-for="Date" type="date" class="form-control" id="inputDonationAmount">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Comments</label>
+                    <textarea asp-for="Comments" class="form-control" placeholder="Comments if any..." style="height: 20px"></textarea>
+                </div>
+                @* <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Voucher</label>
+                    <input asp-for="Voucher" type="file" class="form-control" id="inputDonationAmount">
+                </div> *@
+                <div class="col-md-6 mt-5 text-end">
+                    <input asp-for="Id" hidden/>
+                    <button class="btn btn-info d-inline-block" type="submit" asp-controller="Fuel" asp-action="Update">Update</button>
+                    <button class="btn btn-danger d-inline-block" type="submit" asp-controller="Fuel" asp-action="Delete">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

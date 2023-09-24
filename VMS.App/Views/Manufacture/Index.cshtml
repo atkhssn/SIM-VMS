@@ -1,0 +1,64 @@
+﻿@model VMS.Infrastructure.Model.ManufactureModel
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-5">
+            <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4" style="height:fit-content">
+                <h6 class="mb-4">Add New Manufacture</h6>
+                <form asp-controller="Manufacture" asp-action="Create" method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label">Manufacture Name</label>
+                        <input id="ManufactureName" asp-for="ManufactureName" type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Model</label>
+                        <input id="ModelName" asp-for="ModelName" type="text" class="form-control">
+                    </div>
+                    <div class="text-end">
+                        <input type="hidden" id="ManufactureId" asp-for="ManufactureId" />
+                        <button id="formButton" type="submit" class="btn btn-info d-inline-block">Add Manufacture</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-7">
+            <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+                <h6 class="mb-4">Manufacture List</h6>
+                <table id="ManufactureTable" class="table table-bordered table-striped border-1">
+                    <thead>
+                        <tr class="">
+                            <th>#</th>
+                            <th>Manufacture Name</th>
+                            <th>Model</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+@section ManufactureScript{
+    <script asp-append-version="true" src="~/js/manufacture_js.js"></script>
+}
+@* <link href="~/css/yearpicker/yearpicker.css" rel="stylesheet" />*@
+

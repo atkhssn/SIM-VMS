@@ -1,0 +1,237 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@model VMS.Infrastructure.Model.VehicleModel
+
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+<div class="">
+
+
+    <div class="bg-white rounded-lg shadow-sm p-1 text-dark border h-100 p-4">
+        <h6 class="mb-2">Add New Vehicle</h6>
+
+
+     
+        <form asp-action="Create" asp-controller="Vehicle" method="post" enctype="multipart/form-data">
+            @*
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+            {
+            <div class="alert alert-warning">
+            @ViewData["ErrorMessage"]
+            </div>
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>*@
+
+            <!-- Start Vehicle Drop Down Fields -->
+
+
+
+            <div class="row">
+                <!-- Start Vehicle Drop Down Fields -->
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label ">Manufacture Name</label>
+                        <select id="Manufactureid" asp-for="ManufacturedBy"
+                                class="form-control text-success update-group bg-white">
+                            <option>Select Manufacturer</option>
+                        </select>
+                        <span asp-validation-for="ManufacturedBy" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label  ">Model</label>
+                        <select id="Modelid" asp-for="ModelId"
+                                class="form-control text-success update-group bg-white">
+                            <option>Select Model</option>
+                        </select>
+                        <span asp-validation-for="ModelId" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label">Vehicle Category</label>
+                        <select id="VehicleCategoryId" asp-for="VehicleCategoryId" asp-items="Html.GetEnumSelectList<vehicleCategory>()"
+                                class=" form-control text-success update-group bg-white">
+                            <option>Select Category </option>
+
+                        </select>
+                        <span asp-validation-for="VehicleCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Model Year</label>
+
+                        <input asp-for="Modelyear" type="number" id="modelYear" class=" form-control update-group">
+                        <span asp-validation-for="Modelyear" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Type</label>
+
+                        <select id="vehicleTypeId" asp-for="VehicleType" asp-items="Html.GetEnumSelectList<vehicleType>()"
+                                class=" form-control update-group bg-white">
+                            <option>Select Vehicle Type </option>
+
+                        </select>
+                        <span asp-validation-for="VehicleType" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group ">
+                        <label class="control-label">Color</label>
+
+                        <select id="colorId" asp-for="Color" asp-items="Html.GetEnumSelectList<color>()"
+                                class="form-control update-group bg-white">
+                            <option>Select Color </option>
+
+                        </select>
+                        <span asp-validation-for="Color" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Mode</label>
+                        <select id="vehicleMode" asp-for="VehicleMode"
+                                class="form-control bg-white update-group">
+                            <option value="0">SIM Logistic</option>
+
+                        </select>
+                        <span asp-validation-for="VehicleMode" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <label class="control-label">Vehicle Capacity</label>
+                    <div class="form-group input-group ">
+
+                        <input id="VehicleCapacity" class="form-control update-group" asp-for="VehicleCapacity" type="text" placeholder="Enter">
+
+
+
+
+
+                        <select id="VehicleCapacityId" asp-for="VehicleCapacityId" asp-items="Html.GetEnumSelectList<VehicleCapacity>()"
+                                class="bg-white input-group-append form-control update-group">
+                            <option>Select ↓ </option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Mileage</label>
+                        <input id="VehicleMileage" asp-for="VehicleMileage" type="number" class="form-control update-group" placeholder="Enter registration number">
+
+                        <span asp-validation-for="VehicleMileage" class="text-danger"></span>
+
+                    </div>
+                    @*                    <span asp-validation-for="RegNo" class="text-danger"></span>
+                    *@
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Registration No:</label>
+                        <input id="RegNo" asp-for="RegNo" type="text" class="form-control update-group" placeholder="Enter registration number">
+
+                        <span asp-validation-for="RegNo" class="text-danger"></span>
+
+                    </div>
+                    @*                    <span asp-validation-for="RegNo" class="text-danger"></span>
+                    *@
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Registration Date</label>
+                        <input id="RegDate" asp-for="RegDate" class="form-control my-datepicker update-group" type="date" placeholder="Enter registration number">
+                        <span asp-validation-for="RegDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Registration Expiry Date</label>
+                        <input id="Reg_Expired" asp-for="Reg_ExpiryDate" class="form-control my-datepicker update-group" type="date" placeholder="Enter registration number">
+                        <span asp-validation-for="Reg_ExpiryDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Fitness and Tax token</label>
+                        <input id="fitness_TaxToken" asp-for="fitness_TaxToken" type="number" class="form-control update-group" placeholder="Enter fitness and tax token">
+                        <span asp-validation-for="fitness_TaxToken" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Fitness Expiry Date</label>
+                        <input id="fitnessExpireDate" asp-for="fitnessExpireDate" class="form-control my-datepicker update-group" type="date" placeholder="Enter fitness and tax token">
+                        <span asp-validation-for="fitnessExpireDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Chassis Number</label>
+                        <input id="Chassis" asp-for="Chassis" type="text" class="form-control update-group" placeholder="Enter chassis number">
+                        <span asp-validation-for="Chassis" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Engine Number</label>
+                        <input id="engine" asp-for="Engine" type="text" class="form-control update-group" placeholder="Enter engine number">
+                        <span asp-validation-for="Engine" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div id="Photo" class="form-group">
+                        <label class="control-label">Vehicle Image</label>
+                        <input asp-for="Photo" type="file" class="form-control bg-white" placeholder="Upload vehicle image ">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div id="Document" class="form-group">
+                        <label class="control-label">Vehicle Document</label>
+                        <input asp-for="Document" type="file" class="form-control bg-white" placeholder="Upload vehicle document ">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group align-self-end mb-3">
+                    <button id="formButton" type="submit" class="btn btn-info d-inline-block float-end">Add Vehicle</button>
+                </div>
+            </div>
+            <input id="VehicleId" type="hidden" asp-for="VehicleId" value="" />
+
+
+        </form>
+    </div>
+</div>
+@section Script
+    {
+    <script src="~/js/vehicle_js.js"></script>
+}

@@ -1,0 +1,105 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@{
+    ViewData["Title"] = "Requisition List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model RequisitionModel
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Add New Booking</h6>
+        <div class="merchant-form">
+            <form class="row g-3" asp-controller="Requisition" asp-action="Add" enctype="multipart/form-data">
+                <div class="col-md-6">
+                    <label for="inputDonationType" class="form-label">Vehicle Categotry</label>
+                    <select asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<vehicleCategory>();" class="form-control" id="inputDonationType"></select>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationAmount" class="form-label">Vehicle Quantity</label>
+                    <input asp-for="VehicleQuantity" type="number" class="form-control" id="inputDonationAmount" value="1">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationDate" class="form-label">Trip Start Date</label>
+                    <input asp-for="TripStartDate" type="date" class="form-control" id="inputDonationDate">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDonationDate" class="form-label">Trip End Date</label>
+                    <input asp-for="TripEndDate" type="date" class="form-control" id="inputDonationDate">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputLocation" class="form-label">Start Location</label>
+                    <input asp-for="StartLocation" type="text" class="form-control" id="inputLocation">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputLocation" class="form-label">End Location</label>
+                    <input asp-for="EndLocation" type="text" class="form-control" id="inputLocation">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputComment" class="form-label">Comments</label>
+                    <textarea asp-for="Comments" class="form-control" id="inputComment" placeholder="Type comments if needed..." style="height:20px"></textarea>
+                </div>
+                <div class="col-md-6 mt-5 text-end">
+                    <button class="btn btn-info d-inline-block" type="submit">Booked Vehicle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+            <h6 class="mb-4">Booking List</h6>
+            <table id="myTable" class="table table-bordered table-striped text-center mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Vehicle Type</th>
+                        <th scope="col">Vehicle Quantity</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Start Location</th>
+                        <th scope="col">End Location</th>
+                        <th scope="col">Comments</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var requisition in Model.RequisitionModels)
+                    {
+                        <tr>
+                            <td scope="row">@requisition.Id</td>
+                            <td>
+                                @if (requisition.VehicleType == "4")
+                                {
+                                    <p>Micro Bus</p>
+                                }
+                            </td>
+                            <td>@requisition.VehicleQuantity</td>
+                            <td>@requisition.TripStartDate</td>
+                            <td>@requisition.TripEndDate</td>
+                            <td>@requisition.StartLocation</td>
+                            <td>@requisition.EndLocation</td>
+                            <td>@requisition.Comments</td>
+                            <td>@requisition.IsTripCompleted</td>
+                            <td>
+                                <a class="btn btn-info" asp-controller="Requisition" asp-action="Edit" asp-route-id="@requisition.Id">View</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

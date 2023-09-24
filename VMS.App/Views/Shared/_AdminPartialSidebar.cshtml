@@ -1,0 +1,57 @@
+﻿<div class="navbar-nav w-100">
+    <div class="border-bottom mb-2">
+        <div>
+            <a asp-controller="Admin" asp-action="index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+        </div>
+        <div>
+            <a asp-controller="Requisition" asp-action="index" class="nav-item nav-link "><i class="fas fa-book-medical me-2"></i>Booking</a>
+        </div>
+        <div class="dropdown driver-expense">
+            <button class="nav-item nav-link setting-btn dropdown-toggle" type="button" id="driverExpenseMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="fas fa-wallet me-2"></i>Driver Expeense
+            </button>
+
+            <div class="dropdown-menu menu-content" aria-labelledby="driverExpenseMenuButton">
+                <div>
+                    <a asp-controller="RoadExpense" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-hand-holding-usd me-2"></i>Donation</a>
+                </div>
+
+                <div>
+                    <a asp-controller="Fuel" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-gas-pump me-2"></i>Fuel Load</a>
+                </div>
+
+            </div>
+        </div>
+        
+        @* <div>
+        <a asp-controller="Maintenance" asp-action="Index" class="nav-item nav-link"><i class="fa fa-car-battery me-2"></i>Maintenance</a>
+        </div>*@
+    </div>
+
+    <div class="dropdown setting-box show">
+        <button class="nav-item nav-link setting-btn dropdown-toggle" type="button" id="settingMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fas fa-cog me-2"></i>Settings
+        </button>
+
+        <div class="dropdown-menu menu-content show" aria-labelledby="settingMenuButton">
+            <div>
+                <a asp-controller="Manufacture" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fas fa-shipping-fast me-2"></i>Manufacture</a>
+            </div>
+
+            <div>
+                <a asp-controller="Vehicle" asp-action="index" class="nav-item nav-link sidebar-submenu"><i class="fa fa-car me-2"></i>Vehicle</a>
+            </div>
+
+            <div>
+                <a asp-controller="Driver" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fa fa-user me-2"></i> Driver</a>
+            </div>
+            <div>
+                <a asp-controller="Merchant" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fa fa-store me-2"></i> Merchant</a>
+            </div>
+            <div>
+                <a asp-controller="TransportAgency" asp-action="Index" class="nav-item nav-link sidebar-submenu"><i class="fa fa-handshake me-2"></i>Trans. Agency</a>
+            </div>
+
+        </div>
+    </div>
+</div>

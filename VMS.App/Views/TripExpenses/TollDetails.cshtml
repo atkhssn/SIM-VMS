@@ -1,0 +1,73 @@
+﻿@model TollDetailsModel
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid mx-5 pt-4 px-4">
+
+
+    <div class="bg-light rounded  p-4 w-50">
+        <h6 class="mb-4">New Toll Details</h6>
+        <form asp-controller="TransportAgency" asp-action="Create" method="post">
+
+
+            <div class="col-md-12 col-sm-12 col-lg-12 mb-2 tollDataGroup">
+                <div class="form-group">
+                    <label class="control-label">Toll Name</label>
+
+                    <input asp-for="TollName" type="number" id="TollName" class=" form-control update-group">
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-lg-12 mb-2 tollDataGroup">
+                <div class="form-group ">
+                    <label class="form-label">Toll Fee</label>
+                    <input asp-for="TollFee" type="text" id="TollFee" class="form-control update-group">
+
+                </div>
+
+            </div>
+
+
+
+            <button type="button" id="tollAddButton" class="btn rounded-circle btn-primary m-2"><i class="fa fa-plus"></i></button>
+
+
+            <div class="row ">
+                <div class="form-group col-sm-12">
+                    <button id="formButton" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+
+
+    $('#tollAddButton').on('click', function () {
+        alert('okk');
+
+        $(`<div class="col-md-3 col-sm-3 col-lg-3 mb-2 tollDataGroup">
+                 <div class= "form-group" >
+                 <label class="control-label">Toll Name</label>
+                  <input asp-for="TollName" type="number" id="TollName" class=" form-control update-group">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-3 col-lg-3 mb-2 tollDataGroup">
+                        <div class="form-group ">
+                            <label class="form-label">Toll Fee</label>
+                            <input asp-for="TollFee" type="text" id="TollFee" class="form-control update-group">
+
+                        </div>
+
+                    </div>`).appendTo('#formRow');
+    });
+
+        });
+
+</script>

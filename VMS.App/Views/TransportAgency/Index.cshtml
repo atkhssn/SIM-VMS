@@ -1,0 +1,87 @@
+﻿@model TransportAgencyModel
+
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Add New Transport Agency</h6>
+        <form asp-controller="TransportAgency" asp-action="Create" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label">Agency Name</label>
+                        <input id="AgencyName" asp-for="Name" type="text" class="form-control update-group">
+                    </div>
+
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label">Owner Name</label>
+                        <input id="Owner" asp-for="Owner" type="text" class="form-control update-group">
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label">Contact Number</label>
+                        <input id="PhoneNumber" asp-for="PhoneNumber" type="text" class="form-control update-group">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group ">
+                        <label class="form-label">Address</label>
+                        <input id="Address" asp-for="Address" type="text" class="form-control update-group">
+                    </div>
+                </div>
+                <div class="col-md-12 text-end">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Id" id="TransportAgencyId" value="" />
+                        <button id="formButton" type="submit" class="btn btn-info d-inline-block">Add Agency</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Transport Agency List</h6>
+        <table id="TransportAgencyTable" class="table  table-bordered table-striped border-1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Transport Agency</th>
+                    <th>Owner</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tf>
+
+            </tf>
+        </table>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+@section TransportAgencyScript{
+    <script src="~/js/transportagencyjs.js"></script>
+}

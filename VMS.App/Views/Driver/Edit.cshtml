@@ -1,0 +1,90 @@
+﻿@using VMS.Infrastructure.Model;
+@model DriverModel
+@using static VMS.Infrastructure.Utility.EnumCollection;
+@{
+    Layout = "~/views/shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Add New Driver</h6>
+
+        <form id="form" asp-controller="Driver" asp-action="Update" method="post" enctype="multipart/form-data">
+            <input asp-for="DId" type="text" id="DriverName" class="form-control" hidden>
+            <div class="row mx-2">
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label class="control-label">Driver Name</label>
+                        <input asp-for="DName" type="text" id="DriverName" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label class="control-label" for="LicenseNo">License Number</label>
+                        <input asp-for="LicenceNo" type="text" id="LicenseNo" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label class="control-label" for="lincenseValidation">License Validation Date</label>
+                        <input asp-for="LicenceValidation" id="lincenseValidation" type="date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label class="control-label" for="NIDNumber">NID Number</label>
+                        <input asp-for="NIDNumber" type="text" id="NIDNumber" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label class="control-label" for="DriverShift">Driver Shift</label>
+                        <select asp-for="DriverShift" type="text" id="DriverShift" class="form-control" asp-items="@Html.GetEnumSelectList<DriverShift>()">
+                            <option selected disabled>Select Shift</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <div class="mb-2">
+                            <label class="control-label d-inline-block" for="">Driver Category</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="DriverType" class="form-check-input" name="DriverType" type="radio" id="DriverCategoryFullTime" value="Full Time" checked>
+                            <label class="form-check-label" for="DriverCategoryFullTime">Full Time</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="DriverType" class="form-check-input" name="DriverType" type="radio" id="DriverCategoryPartTime" value="Part Time">
+                            <label class="form-check-label" for="DriverCategoryPartTime">Part Time</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="DriverType" class="form-check-input" name="DriverType" type="radio" id="DriverCategoryContractual" value="Contractual">
+                            <label class="form-check-label" for="DriverCategoryContractual">Contractual</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12 update-group text-end">
+                    <button id="formButton" type="submit" class="btn btn-info d-inline-block" asp-controller="Driver" asp-action="Update">Update</button>
+                    <button id="formButton" type="submit" class="btn btn-danger d-inline-block" asp-controller="Driver" asp-action="Delete">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Merchant List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model MerchantModel
+
+<div class="">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Add New Merchant</h6>
+        <div class="merchant-form">
+            <form class="row g-3" asp-controller="Merchant" asp-action="Add">
+                <div class="col-md-6">
+                    <label for="inputMerchantName" class="form-label">Merchant Name</label>
+                    <input asp-for="MerchantName" type="text" class="form-control" id="inputMerchantName">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDepartmentName" class="form-label">Department Name</label>
+                    <input asp-for="DepartmentName" type="text" class="form-control" id="inputDepartmentName">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputResponsiblePerson" class="form-label">Conatct Person</label>
+                    <input asp-for="ResponsiblePerson" type="text" class="form-control" id="inputResponsiblePerson">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPhone" class="form-label">Contact Number</label>
+                    <input asp-for="MerchantPhone" type="number" class="form-control" id="inputPhone">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail" class="form-label">Email Address</label>
+                    <input asp-for="MerchantEmail" type="email" class="form-control" id="inputEmail">
+                </div>
+                <div class="col-md-6 mt-5 text-end">
+                    <button class="btn btn-info d-inline-block" type="submit">Add Merchant</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="mt-3">
+        <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+            <h6 class="mb-4">Merchant List</h6>
+            <table id="myTable" class="table table-bordered table-striped  mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Merchant Id</th>
+                        <th scope="col">Merchant Name</th>
+                        <th scope="col">Merchant Department</th>
+                        <th scope="col">Responsible Person Name</th>
+                        <th scope="col">Merchant Phone</th>
+                        <th scope="col">Merchant Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var merchant in Model.MerchantList)
+                    {
+                        <tr>
+                            <td scope="row">@merchant.Id</td>
+                            <td>@merchant.MerchantName</td>
+                            <td>@merchant.DepartmentName</td>
+                            <td>@merchant.ResponsiblePerson</td>
+                            <td>@merchant.MerchantPhone</td>
+                            <td>@merchant.MerchantEmail</td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="Merchant" asp-action="Edit" asp-route-id="@merchant.Id">Update</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="pt-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="text-center footer-text">2023 &copy; VMS - All Right Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

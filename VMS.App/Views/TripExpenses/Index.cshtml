@@ -1,0 +1,131 @@
+﻿@using static VMS.Infrastructure.Utility.EnumCollection;
+@model TripExpensesModel
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-white rounded-lg shadow-sm p-5 text-dark border h-100 p-4">
+        <h6 class="mb-4">Trip Expenses</h6>
+
+
+        @*  <div class="card-body"> *@
+        <form asp-action="Create" asp-controller="Vehicle" method="post" enctype="multipart/form-data">
+            @*
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+            {
+            <div class="alert alert-warning">
+            @ViewData["ErrorMessage"]
+            </div>
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>*@
+
+            <!-- Start Vehicle Drop Down Fields -->
+
+
+
+            <div id="formRow" class="row mx-2">
+                <!-- Start Vehicle Drop Down Fields -->
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 ">
+                    <div class="form-group ">
+                        <label class="js-example-basic-single control-label  ">Trip Route</label>
+                        <select id="Manufactureid"
+                                class="form-control text-success update-group bg-white" disabled>
+                            <option>Select Model</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 ">
+                    <div class="form-group ">
+                        <label class="js-example-basic-single control-label  ">Trip Status</label>
+                        <select id="OvertimeStatus" asp-for="OvertimeStatus" asp-items="Html.GetEnumSelectList<OvertimeStatus>()"
+                                class="form-control text-success update-group bg-white">
+                            <option>Select Status</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 ">
+                    <div class="form-group ">
+                        <label class="js-example-basic-single control-label  ">Route Mileage</label>
+                        <input asp-for="RouteMileage" type="text" id="VehicleCategory" class="form-control update-group">
+
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 overTimeGroup">
+                    <div class="form-group ">
+                        <label class="js-example-basic-single control-label  ">Extra Mileage</label>
+                        <input asp-for="ExtraMileage" type="text" id="VehicleCategory" class="form-control update-group">
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2  ">
+                    <div class="form-group ">
+                        <label class="js-example-basic-single control-label  ">Fuel Cost</label>
+                        <input asp-for="Fuel" id="VehicleCategory" class="form-control update-group">
+
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 overTimeGroup">
+                    <div class="form-group  ">
+                        <label class="js-example-basic-single control-label  ">Additional Fuel Cost</label>
+                        <input asp-for="AdditionalFuel" type="text" id="VehicleCategory" class="form-control update-group">
+
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 overTimeGroup">
+                    <div class="form-group">
+                        <label class="control-label">Driver Commission</label>
+
+
+                        <input asp-for="DriverCommission" type="number" id="DriverCommission" class=" form-control update-group">
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2 overTimeGroup">
+                    <div class="form-group">
+                        <label class="control-label">Helper Commission</label>
+
+
+                        <input asp-for="HelperCommission" type="number" id="HelperCommission" class=" form-control update-group">
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                    <div class="form-group">
+                        <label class="control-label">Labor Tips</label>
+
+
+                        <input asp-for="LaborTips" type="number" id="LaborTips" class=" form-control update-group">
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 mb-2">
+                    <div class="form-group">
+                        <label class="control-label">Road Commission</label>
+
+
+                        <input asp-for="RoadCommission" type="number" id="RoadCommission" class=" form-control update-group">
+
+                    </div>
+                </div>
+                <div class="row mx-2">
+                    <div class="form-group col-sm-12">
+                        <button id="formButton" type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+@section TripExpensesScript{
+    <script src="~/js/tripexpensesjs.js"></script>
+}
+
